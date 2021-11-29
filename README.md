@@ -48,3 +48,7 @@
     1. backend > routes > index.js 수정
 2. Frontend 수정
     1. backend > frontend > src > components > HelloWorld.vue 수정
+
+## GiT Push
+
+Vue.js 설치시 Git File이 생성 되므로 현재와 같이 모듈로서 Vue.js를 사용할 경우 Vue.js에서 Git 숨긴 파일을 삭제 하면 된다. 

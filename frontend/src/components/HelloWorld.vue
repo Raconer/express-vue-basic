@@ -1,57 +1,54 @@
 <template>
   <div>
+    <h1 id="app"></h1>
     <h1>{{state.getMsg}}</h1>
-    <h1>{{state.postMsg}}</h1>
+    <h1>{{state.getMsg}}</h1>
   </div>
 </template>
 
 <script>
-import { onMounted, reactive }from 'vue'
+// import Vue from 'vue'
 import axios from 'axios'
-
-alert("start");
 
 export default {
   name: 'Test',
-  setup () {
-    const state = reactive ({
+  data () {
+    let state = {
       getMsg: '',
       postMsg: ''
-    })
-
-    onMounted(() => {
-      try {
-        let urlGet = '/api/getTest';
-        axios.get(urlGet, {
-        })
-            .then(function (response) {
-              alert("Get Success");
-              state.getMsg = response.data.msg
-            })
-            .catch(function (error) {
-              alert(error);
-            });
-
-
-        let urlPost = '/api/postTest';
-        axios.post(urlPost, {
-          name: 'Finiview'
-        }).then(function (response) {
-          alert("Post Success");
-          state.postMsg = response.data.msg
-        })
-            .catch(function (error) {
-              alert(error);
-            });
-      } catch (err) {
-        console.log(err);
-      }
-    });
+    };
 
     return {
       state
     }
-  }
+  },
+  created(){
+    console.log(this.state)
+    try {
+      let urlGet = '/api/getTest';
+      axios.get(urlGet, {})
+        .then(function (response) {
+          console.log("Get Success");
+          this.state.getMsg = response.data.msg;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+
+      let urlPost = '/api/postTest';
+      axios.post(urlPost, {name: 'Finiview'}).
+        then(function (response) {
+          console.log("Post Success");
+          this.state.postMsg = response.data.msg;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        } catch (err) {
+          console.log(err);
+        }
+    }
 }
 </script>
 
