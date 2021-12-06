@@ -1,8 +1,6 @@
 <template>
   <div>
     <h1 id="app"></h1>
-    <h1>{{state.getMsg}}</h1>
-    <h1>{{state.getMsg}}</h1>
   </div>
 </template>
 
